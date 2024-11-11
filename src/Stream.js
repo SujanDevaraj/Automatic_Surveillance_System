@@ -32,14 +32,24 @@ function Stream() {
         {ip1 && (
           <div id="videoContainer1" style={styles.videoContainer}>
             <h2>Video Feed 1</h2>
-            <iframe id="videoFeed1" style={styles.videoFeed} src={`http://${ip1}:5000/video_feed`} allowFullScreen></iframe>
+            <iframe
+              id="videoFeed1"
+              style={styles.videoFeed}
+              src={`/api/proxy?ip=${ip1}&port=5000/video_feed`}
+              allowFullScreen
+            ></iframe>
             <button className="refresh-button" style={styles.button} onClick={() => refreshFeed('videoFeed1')}>Refresh Video Feed 1</button>
           </div>
         )}
         {ip2 && (
           <div id="videoContainer2" style={styles.videoContainer}>
             <h2>Video Feed 2</h2>
-            <iframe id="videoFeed2" style={styles.videoFeed} src={`http://${ip2}:8080/`} allowFullScreen></iframe>
+            <iframe
+              id="videoFeed2"
+              style={styles.videoFeed}
+              src={`/api/proxy?ip=${ip2}&port=8080/`}
+              allowFullScreen
+            ></iframe>
             <button className="refresh-button" style={styles.button} onClick={() => refreshFeed('videoFeed2')}>Refresh Video Feed 2</button>
           </div>
         )}
@@ -64,9 +74,7 @@ const styles = {
     justifyContent: 'space-between',
     gap: '30px',
     width: '100%',
-    height:'50px',
-  
-    
+    height: '50px',
   },
   videoWrapper: {
     display: 'flex',
